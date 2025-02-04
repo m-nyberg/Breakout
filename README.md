@@ -1,3 +1,3 @@
 # Breakout 
 
-# Jeg skal lage et breakoutspill, 
+# Jeg skal lage breakout
