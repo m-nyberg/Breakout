@@ -95,7 +95,7 @@
                             dy = -dy
                             b.status = 0
                             score += 100
-                            if (score == brickRowCount * brickColumnCount) {
+                            if (score == (brickRowCount * brickColumnCount) * 100) {
                                 alert("DU VANT, GRATULERER! Du fikk " + score + " poeng")
                                 document.location.reload()
                                 clearInterval(interval)
