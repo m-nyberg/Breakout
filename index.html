@@ -5,195 +5,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bahiana&family=Rubik+Glitch&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        canvas {
-            background-color: #eee;
-            display: block;
-            margin: 0 auto;
+        body {
+            background-color: black;
+        }
+
+        .video {
+            width: 100%;
+        }
+
+        .overskrift1 {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 210px;
+            font-family: "Rubik Glitch", sans-serif;
+            color: #5e1212;
+            margin: 2px;
+            text-shadow: 2px 2px 5px red;
+            font-weight: 1000;
+        }
+
+        .boks {
+            position: absolute;
+            top: 64%;
+            left: 50%;
+            transform: translate(-52%, -50%);
+            text-decoration: none;
+        }
+
+        a>div {
+            width: 270px;
+            height: 60px;
+            box-shadow: 0 0 10px 5px white;
+            color: azure;
+            font-family: "Rubik Glitch";
+            font-size: 28px;
+            margin: 30px;
+            text-align: center;
+        }
+        
+        div>p {
+            padding-top: 16px;
+            color: pink;
+            text-decoration: none;
+        }
+        
+        a>div:hover {
+            box-shadow: 0 0 10px 5px red;
         }
     </style>
 </head>
 
 <body>
-    <canvas id="Canvas" width="480" height="320"></canvas>
-
-    <script>
-        let interval = 0
-
-        const canvas = document.getElementById("Canvas")
-        const ctx = canvas.getContext("2d")
-        const ballRadius = 10
-
-        let x = canvas.width / 2
-        let y = canvas.height - 30
-        let dx = 2
-        let dy = -2
-
-        const paddleHeight = 10
-        const paddleWidth = 75
-        let paddleX = (canvas.width - paddleWidth) / 2
-
-        let høyreTrykk = false
-        let venstreTrykk = false
-
-        const brickRowCount = 3
-        const brickColumnCount = 5
-        const brickWidth = 75
-        const brickHeight = 20
-        const brickPadding = 10
-        const brickOffsetTop = 30
-        const brickOffsetLeft = 30
-
-        let score = 0
-
-        function poengscore() {
-            ctx.font = "16px Arial"
-            ctx.fillStyle = "#0095DD"
-            ctx.fillText("Poeng: " + score, 8, 20) // tekst, variabel, posisjon
-        }
 
 
-        document.addEventListener("keydown", keyDownHandler, false)
-        document.addEventListener("keyup", keyUpHandler, false)
+    <video src="bilder/space2.mp4" class="video" autoplay loop muted></video>
+    <h1 class="overskrift1"> Breakout </h1>
+    <div class="boks">
+        <a href="level1.html">
+            <div>
+                <p>Nivå 1</p>
+            </div>
+        </a>
+        <a href="level2.html">
+            <div>
+                <p>Nivå 2</p>
+            </div>
+        </a>
 
-        let bricks = []
-        for (let i = 0; i < brickColumnCount; i++) {
-            bricks[i] = []
-            for (let r = 0; r < brickRowCount; r++) {
-                bricks[i][r] = { x: 0, y: 0, status: 1 }
-            }
-        }
+        <a href="level1.html">
+            <div>
+                <p>Nivå 3</p>
+            </div>
+        </a>
+        <a href="level2.html">
+            <div>
+                <p>Nivå 4</p>
+            </div>
+        </a>
 
-        function keyDownHandler(e) {
-            if (e.key == "Right" || e.key == "ArrowRight") {
-                høyreTrykk = true
-            } else if (e.key == "Left" || e.key == "ArrowLeft") {
-                venstreTrykk = true
-            }
-        }
-        function keyUpHandler(e) {
-            if (e.key == "Right" || e.key == "ArrowRight") {
-                høyreTrykk = false;
-            } else if (e.key == "Left" || e.key == "ArrowLeft") {
-                venstreTrykk = false;
-            }
-        }
-
-        function kollisjonDetektering() {
-            for (let i = 0; i < brickColumnCount; i++) {
-                for (let r = 0; r < brickRowCount; r++) {
-                    const b = bricks[i][r]
-                    if (b.status == 1) {
-                        if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
-                            dy = -dy
-                            b.status = 0
-                            score += 100
-                            if (score == (brickRowCount * brickColumnCount) * 100) {
-                                alert("DU VANT, GRATULERER! Du fikk " + score + " poeng")
-                                document.location.reload()
-                                clearInterval(interval)
-                            }
-                        }
-                    }
-                }
-            }
-        }
+    </div>
 
 
-
-        function tegnBall() {
-            ctx.beginPath()
-            ctx.arc(x, y, ballRadius, 0, Math.PI * 2)
-            ctx.fillStyle = "#0095DD"
-            ctx.fill()
-            ctx.closePath()
-        }
-
-        function tegnPaddle() {
-            ctx.beginPath()
-            ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight)
-            ctx.fillStyle = "#0095DD"
-            ctx.fill()
-            ctx.closePath()
-        }
-
-        function tegnBricks() {
-            for (let i = 0; i < brickColumnCount; i++) {
-                for (let r = 0; r < brickRowCount; r++) {
-                    if (bricks[i][r].status == 1) {
-                        let brickX = i * (brickWidth + brickPadding) + brickOffsetLeft
-                        let brickY = r * (brickHeight + brickPadding) + brickOffsetTop
-                        bricks[i][r].x = brickX
-                        bricks[i][r].y = brickY
-                        ctx.beginPath()
-                        ctx.rect(brickX, brickY, brickWidth, brickHeight)
-                        ctx.fillStyle = "#0095DD"
-                        ctx.fill()
-                        ctx.closePath()
-                    }
-                }
-            }
-        }
-
-
-        function flyttPaddle() {
-            if (høyreTrykk) {
-                paddleX += 5;
-                if (paddleX + paddleWidth > canvas.width) {
-                    paddleX = canvas.width - paddleWidth;
-                }
-            } else if (venstreTrykk) {
-                paddleX -= 5;
-                if (paddleX < 0) {
-                    paddleX = 0;
-                }
-            }
-        }
-
-
-        function sjekkKollisjonVegg() {
-            if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
-                dx = -dx;
-            }
-            if (y + dy < ballRadius) {
-                dy = -dy
-
-            } else if (y + dy > canvas.height - ballRadius) {
-                if (x > paddleX && x < paddleX + paddleWidth) {
-                    dy = -dy
-                } else {
-                    alert("GAME OVER    Du fikk " + score + " poeng")
-                    document.location.reload()
-                    clearInterval(interval)
-                }
-            }
-        }
-
-        function oppdater() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height)
-            tegnBricks()
-            tegnBall()
-            tegnPaddle()
-            poengscore()
-            sjekkKollisjonVegg()
-            kollisjonDetektering()
-            flyttPaddle()
-
-            x += dx
-            y += dy
-        }
-
-
-        interval = setInterval(oppdater, 10);
-
-    </script>
 
 </body>
 
