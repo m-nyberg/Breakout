@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #containerGO {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            border: 4px solid rgb(186, 33, 33);
+            background-color: black;
+            color: blueviolet;
+            font-size: 30px;
+            width: 200px;
+            height: 300px;
+            box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            
+        }
+
+        #knapp1, #knapp2 {
+            border: 1px solid rgb(211, 32, 32);
+            padding: 15px;
+            color: #0095DD;
+        }
+        a {
+            text-decoration: none;
+            color: #0095DD;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div id="containerGO">
+        <div id="poengboks"></div>
+        <div id="knapp1"></div>
+        <div id="knapp2"></div>
+    </div>
+    <script>
+        const poengboksEl = document.getElementById("poengboks")
+        const knapp1El = document.getElementById("knapp1")
+        const knapp2El = document.getElementById("knapp2")
+        const divEl = document.createElement("div")
+        divEl.innerHTML = "Game Over"
+        poengboksEl.appendChild(divEl)
+        const divEl2 = document.createElement("div")
+        divEl2.innerHTML = "din poengscore er"
+        divEl2.style.fontSize = "20px"
+        poengboksEl.appendChild(divEl2)
+        const btnEl1 = document.createElement("a")
+        btnEl1.innerHTML = "Spill igjen"
+        btnEl1.href = "level1.html"
+        knapp1El.appendChild(btnEl1)
+        const btnEl2 = document.createElement("a")
+        btnEl2.innerHTML = "Til forsiden"
+        btnEl2.href = "index.html"
+        knapp2.appendChild(btnEl2)
+    </script>
+</body>
+</html>
+
+alert("GAME OVER    Du fikk " + score + " poeng")
+document.location.reload()
+clearInterval(interval)
