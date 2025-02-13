@@ -60,7 +60,7 @@
         btnEl2.href = "index.html"
         knapp2.appendChild(btnEl2)*/
 
-        const poengboksEl = document.getElementById("poengboks")
+        /* const poengboksEl = document.getElementById("poengboks")
         const knapp1El = document.getElementById("knapp1")
         const knapp2El = document.getElementById("knapp2")
         const divEl = document.createElement("div")
@@ -77,7 +77,18 @@
         const btnEl2 = document.createElement("a")
         btnEl2.innerHTML = "Til forsiden"
         btnEl2.href = "index.html"
-        knapp2.appendChild(btnEl2)
+        knapp2.appendChild(btnEl2)*/ 
+
+        const spørsmålstegnEl = document.getElementById("spørsmålstegn")
+        spørsmålstegnEl.addEventListener("mouseover", minBruksanvisning())
+
+        function minBruksanvisning() {
+            const containerHjelpEL = document.getElementById("containerHjelp")
+            containerHjelpEL.style.display = "flex"
+            const divEl3 = document.createElement("div")
+            divEl3.innerHTML = "Bruk piltastene til å bevege platen, slik at ballen ikke treffer bakken. Trykk på pilen i venstre hjørne for å gå tilbake til forsiden."
+        }
+
     </script>
 </body>
 </html>

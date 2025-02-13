@@ -9,6 +9,14 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bahiana&family=Rubik+Glitch&display=swap');
 
+        :root {
+            --rød: red;
+            --bla: #0095DD;
+            --bakgrunnsfarge: black; 
+            --hvit: white; 
+    
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -21,12 +29,12 @@
         }
 
         body {
-            background-color: black;
+            background-color: var(--bakgrunnsfarge);
             font-family: "Rubik Glitch", sans-serif;
         }
 
         canvas {
-            background-color: #eee;
+            background-color: var(--bakgrunnsfarge);
             display: block;
             margin: 0 auto;
             margin-top: 30px;
@@ -49,16 +57,50 @@
             font-size: 50px;
             width: 600px;
             height: 480px;
-            box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+        }
+
+        #containerHjelp {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            position: absolute;
+            top: 25%;
+            right: 3%;
+            border: 4px solid var(--rød);
+            background-color: var(--bakgrunnsfarge);
+            color: var(--bla);
+            width: 200px;
+            height: fit-content;
+
+        }
+
+        #containerHjelp>p {
+            font-size: 20px;
+            margin: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: center;
+        }
+
+        #containerHjelp>h2 {
+            font-size: 25px;
+            margin: 20px;
+            margin-bottom: 0px;
 
         }
 
         #knapp1,
         #knapp2 {
-            border: 3px solid rgb(211, 32, 32);
+            border: 3px solid var(--rød);
             padding: 20px;
-            color: #0095DD;
+            color: var(--bla);
             font-size: 25px;
+        }
+
+        #knapp1:hover,
+        #knapp2:hover {
+            border: 3px solid var(--bla);
         }
 
         #poengboks {
@@ -67,7 +109,7 @@
 
         a {
             text-decoration: none;
-            color: #0095DD;
+            color: var(--bla);
         }
 
         #spørsmålstegn {
@@ -76,6 +118,7 @@
             right: 5%;
             width: 80px;
         }
+
         #pil {
             position: absolute;
             top: 10%;
@@ -84,16 +127,16 @@
             rotate: 180deg;
         }
 
-        #pil:hover, #spørsmålstegn:hover {
-          /*  box-shadow: 0 0 10px 5px red;*/
-          width: 100px;
+        #pil:hover,
+        #spørsmålstegn:hover {
+            width: 100px;
         }
     </style>
 </head>
 
 <body>
     <video src="bilder/space2.mp4" class="video" autoplay loop muted></video>
-    <canvas id="Canvas" width="900" height="600vh" style="border:1px solid #bf3434;"></canvas>
+    <canvas id="Canvas" width="900" height="600vh" style="border:1px solid var(--rød);"></canvas>
     <div id="containerGO">
         <div id="poengboks"></div>
         <div id="knapp1"></div>
@@ -105,6 +148,11 @@
     </a>
 
     <img id="spørsmålstegn" src="bilder/sprsr.gif" alt="">
+    <div id="containerHjelp">
+        <h2>Hjelp</h2>
+        <p>"Bruk piltastene til å bevege platen, slik at ballen ikke treffer bakken. Trykk på pilen i venstre hjørne for
+            å gå tilbake til forsiden."</p>
+    </div>
     <script>
         let interval = 0
 
@@ -137,7 +185,20 @@
         function poengscore() {
             ctx.font = "27px Rubik Glitch"
             ctx.fillStyle = "#0095DD"
-            ctx.fillText("Poeng: " + score, 30, 40) // tekst, variabel, posisjon
+            ctx.fillText("Poeng: " + score, 30, 40)
+        }
+
+        const spørsmålstegnEl = document.getElementById("spørsmålstegn")
+        const containerHjelpEL = document.getElementById("containerHjelp")
+        spørsmålstegnEl.addEventListener("mouseover", minBruksanvisning)
+        spørsmålstegnEl.addEventListener("mouseleave", minBruksanvisningbort)
+
+        function minBruksanvisning() {
+            containerHjelpEL.style.display = "flex"
+        }
+
+        function minBruksanvisningbort() {
+            containerHjelpEL.style.display = "none"
         }
 
 
@@ -178,7 +239,7 @@
                             score += 100
                             if (score == (brickRowCount * brickColumnCount) * 100) {
                                 clearInterval(interval)
-                                document.getElementById("containerGO").style.display = "flex";
+                                document.getElementById("containerGO").style.display = "flex"
                                 const poengboksEl = document.getElementById("poengboks")
                                 const knapp1El = document.getElementById("knapp1")
                                 const knapp2El = document.getElementById("knapp2")
@@ -298,9 +359,6 @@
 
         function oppdater() {
             ctx.clearRect(0, 0, canvas.width, canvas.height)
-            ctx.rect(0, 0, canvas.width, canvas.height)
-            ctx.fillStyle = "#000"
-            ctx.fill()
             tegnBricks()
             tegnBall()
             tegnPaddle()
@@ -315,7 +373,7 @@
 
 
         interval = setInterval(oppdater, 10);
-       
+
     </script>
 
 </body>

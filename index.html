@@ -8,6 +8,15 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bahiana&family=Rubik+Glitch&display=swap');
 
+        :root {
+            --rød: red;
+            --bla: #0095DD;
+            --bakgrunnsfarge: black; 
+            --hvit: white; 
+            --skyggeoverskrift: rgb(214, 38, 38);
+            --overskrift: #7e0e0e;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -15,7 +24,8 @@
         }
 
         body {
-            background-color: black;
+            background-color: var(--bakgrunnsfarge);
+            font-family: "Rubik Glitch", sans-serif;
         }
 
         .video {
@@ -28,10 +38,10 @@
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 210px;
-            font-family: "Rubik Glitch", sans-serif;
-            color: #5e1212;
+            color: var(--overskrift);
             margin: 2px;
-            text-shadow: 2px 2px 5px red;
+            text-shadow: 5px 5px 5px var(--skyggeoverskrift);
+            /*text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;*/
             font-weight: 1000;
         }
 
@@ -46,9 +56,7 @@
         a>div {
             width: 270px;
             height: 60px;
-            box-shadow: 0 0 10px 5px white;
-            color: azure;
-            font-family: "Rubik Glitch";
+            box-shadow: 0 0 10px 5px var(--overskrift);
             font-size: 28px;
             margin: 30px;
             text-align: center;
@@ -56,7 +64,7 @@
         
         div>p {
             padding-top: 16px;
-            color: pink;
+            color: rgb(239, 119, 119);
             text-decoration: none;
         }
         
@@ -77,23 +85,23 @@
     <div class="boks">
         <a href="level1.html">
             <div>
-                <p>Nivå 1</p>
+                <p>Level 1</p>
             </div>
         </a>
         <a href="level2.html">
             <div>
-                <p>Nivå 2</p>
+                <p>Level 2</p>
             </div>
         </a>
 
         <a href="level1.html">
             <div>
-                <p>Nivå 3</p>
+                <p>Level 3</p>
             </div>
         </a>
         <a href="level2.html">
             <div>
-                <p>Nivå 4</p>
+                <p>Level 4</p>
             </div>
         </a>
 
