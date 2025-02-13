@@ -69,6 +69,25 @@
             text-decoration: none;
             color: #0095DD;
         }
+
+        #spørsmålstegn {
+            position: absolute;
+            top: 5%;
+            right: 5%;
+            width: 80px;
+        }
+        #pil {
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            width: 80px;
+            rotate: 180deg;
+        }
+
+        #pil:hover, #spørsmålstegn:hover {
+          /*  box-shadow: 0 0 10px 5px red;*/
+          width: 100px;
+        }
     </style>
 </head>
 
@@ -80,6 +99,12 @@
         <div id="knapp1"></div>
         <div id="knapp2"></div>
     </div>
+
+    <a href="index.html">
+        <img id="pil" src="bilder/gjennomsiktigpil.png" alt="">
+    </a>
+
+    <img id="spørsmålstegn" src="bilder/sprsr.gif" alt="">
     <script>
         let interval = 0
 
@@ -152,9 +177,26 @@
                             b.status = 0
                             score += 100
                             if (score == (brickRowCount * brickColumnCount) * 100) {
-                                alert("DU VANT, GRATULERER! Du fikk " + score + " poeng")
-                                document.location.reload()
                                 clearInterval(interval)
+                                document.getElementById("containerGO").style.display = "flex";
+                                const poengboksEl = document.getElementById("poengboks")
+                                const knapp1El = document.getElementById("knapp1")
+                                const knapp2El = document.getElementById("knapp2")
+                                const divEl = document.createElement("div")
+                                divEl.innerHTML = "LEVEL COMPLETE"
+                                poengboksEl.appendChild(divEl)
+                                const divEl2 = document.createElement("div")
+                                divEl2.innerHTML = "Gratulerer, du vant! Du fikk " + score + " poeng"
+                                divEl2.style.fontSize = "20px"
+                                poengboksEl.appendChild(divEl2)
+                                const btnEl1 = document.createElement("a")
+                                btnEl1.innerHTML = "Neste nivå"
+                                btnEl1.href = "level2.html"
+                                knapp1El.appendChild(btnEl1)
+                                const btnEl2 = document.createElement("a")
+                                btnEl2.innerHTML = "Til forsiden"
+                                btnEl2.href = "index.html"
+                                knapp2.appendChild(btnEl2)
                             }
                         }
                     }
@@ -227,7 +269,7 @@
                 if (x > paddleX && x < paddleX + paddleWidth) {
                     dy = -dy
                 } else {
-                    
+
                     clearInterval(interval)
                     document.getElementById("containerGO").style.display = "flex";
                     const poengboksEl = document.getElementById("poengboks")
@@ -273,7 +315,7 @@
 
 
         interval = setInterval(oppdater, 10);
-
+       
     </script>
 
 </body>

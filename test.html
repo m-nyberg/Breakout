@@ -41,7 +41,7 @@
         <div id="knapp2"></div>
     </div>
     <script>
-        const poengboksEl = document.getElementById("poengboks")
+        /*const poengboksEl = document.getElementById("poengboks")
         const knapp1El = document.getElementById("knapp1")
         const knapp2El = document.getElementById("knapp2")
         const divEl = document.createElement("div")
@@ -54,6 +54,25 @@
         const btnEl1 = document.createElement("a")
         btnEl1.innerHTML = "Spill igjen"
         btnEl1.href = "level1.html"
+        knapp1El.appendChild(btnEl1)
+        const btnEl2 = document.createElement("a")
+        btnEl2.innerHTML = "Til forsiden"
+        btnEl2.href = "index.html"
+        knapp2.appendChild(btnEl2)*/
+
+        const poengboksEl = document.getElementById("poengboks")
+        const knapp1El = document.getElementById("knapp1")
+        const knapp2El = document.getElementById("knapp2")
+        const divEl = document.createElement("div")
+        divEl.innerHTML = "LEVEL COMPLETE"
+        poengboksEl.appendChild(divEl)
+        const divEl2 = document.createElement("div")
+        divEl2.innerHTML = "Gratulerer, du vant!"
+        divEl2.style.fontSize = "20px"
+        poengboksEl.appendChild(divEl2)
+        const btnEl1 = document.createElement("a")
+        btnEl1.innerHTML = "Neste nivå"
+        btnEl1.href = "level2.html"
         knapp1El.appendChild(btnEl1)
         const btnEl2 = document.createElement("a")
         btnEl2.innerHTML = "Til forsiden"
