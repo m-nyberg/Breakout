@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Bahiana&family=Rubik+Glitch&display=swap');
+
+:root {
+    --rød: red;
+    --bla: #0095DD;
+    --bakgrunnsfarge: black;
+    --hvit: white;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.video {
+    width: 100%;
+    height: 101vh;
+}
+
+body {
+    background-color: var(--bakgrunnsfarge);
+    font-family: "Rubik Glitch", sans-serif;
+}
+
+canvas {
+    background-color: var(--bakgrunnsfarge);
+    display: block;
+    margin-top: 30px;
+    position: absolute;
+    top: 10%;
+    left: 18%;
+}
+
+#containerGO,
+#containerGC {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 25%;
+    left: 28%;
+    border: 4px solid rgb(186, 33, 33);
+    background-color: black;
+    color: #0095DD;
+    font-size: 50px;
+    width: 600px;
+    height: 480px;
+
+}
+
+
+#containerHjelp {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 20%;
+    right: 3%;
+    border: 4px solid var(--rød);
+    background-color: var(--bakgrunnsfarge);
+    color: var(--bla);
+    width: 200px;
+    height: fit-content;
+
+}
+
+#containerHjelp>p {
+    font-size: 20px;
+    margin: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+}
+
+#containerHjelp>h2 {
+    font-size: 25px;
+    margin: 20px;
+    margin-bottom: 0px;
+
+}
+
+#knapp1,
+#knapp2 {
+    border: 3px solid var(--rød);
+    padding: 20px;
+    color: var(--bla);
+    font-size: 28px;
+}
+
+#knapp1:hover,
+#knapp2:hover {
+    border: 3px solid var(--bla);
+}
+
+#poengboks {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: var(--bla);
+}
+
+#spørsmålstegn {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    width: 80px;
+}
+
+#pil {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    width: 80px;
+    rotate: 180deg;
+}
+
+#pil:hover {
+    width: 100px;
+}
