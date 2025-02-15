@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <video src="bilder/space2.mp4" class="video" autoplay loop muted></video>
+    <canvas id="Canvas" width="900" height="600vh" style="border:1px solid var(--rød);"></canvas>
+
+    <div id="containerGO">
+        <div id="poengboks">
+            <p>GAME OVER</p>
+            <p></p>
+        </div>
+        <a href="level3.html">
+            <div id="knapp1">
+                Spill igjen
+            </div>
+        </a>
+        <a href="velg_level.html">
+            <div id="knapp2">
+                Velg et annet level
+            </div>
+        </a>
+    </div>
+
+    <div id="containerGC">
+        <div id="poengboks">
+            <p>LEVEL COMPLETE</p>
+        </div>
+        <div id="knapp1">
+            <a href="level4.html">
+                Neste nivå
+            </a>
+        </div>
+        <div id="knapp2">
+            <a href="index.html">
+                Til forsiden
+            </a>
+        </div>
+    </div>
+
+    <a href="velg_level.html">
+        <img id="pil" src="bilder/gjennomsiktigpil.png" alt="">
+    </a>
+
+    <img id="spørsmålstegn" src="bilder/sprsr.gif" alt="">
+
+    <div id="containerHjelp">
+        <h2>Hjelp</h2>
+        <p>"Bruk piltastene til å bevege platen, slik at ballen ikke treffer bakken. Trykk på pilen i venstre hjørne for
+            å gå tilbake til forsiden."</p>
+    </div>
+
+    <script src="script.js">
+
+        
+    </script>
+
+</body>
+
+</html>
