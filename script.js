@@ -61,20 +61,28 @@ for (let i = 0; i < brickColumnCount; i++) {
     }
 }
 
-if (bodyID == "test2"){
-    //fjerner noen bricks
+//fjerner noen bricks, forskjellig for hvert brett
+if (bodyID == "level2") {
+    for (let r = 1; r < brickRowCount; r += 2) {
+        for (let i = 1; i < brickColumnCount; i+=2) {
+            bricks[i][r].status = 0
+        }
+    }
+}
+
+if (bodyID == "test2" || bodyID == "level3") {
     for (let i = 8; i > 3; i--) {
         for (let r = i - 5; r >= 0; r--) {
             bricks[i][r].status = 0
         }
     }
-    
+
     for (let i = 0; i < 5; i++) {
         for (let r = 3 - i; r >= 0; r--) {
             bricks[i][r].status = 0;
         }
     }
-    
+
     bricks[4][5].status = 2
     bricks[6][3].status = 2
     bricks[2][3].status = 2
@@ -182,9 +190,9 @@ function kollisjonDetektering() {
                         dx = dx * 1.2
                     }
                     if (b.status == 3) {
-                       score += 1000
+                        score += 1000
                     }
-                    
+
                     dy = -dy
 
                     b.status = 0
@@ -227,7 +235,7 @@ function sjekkKollisjonVegg() {
     } else if (y + dy > canvas.height - ballRadius) {
         if (x > paddleX && x < paddleX + paddleWidth) {
             dy = -dy
-        } else {
+        } else { //hvis ballen treffer bakken utenfor paddle, avsluttes spillet og game over boksen blir synlig
             clearInterval(interval)
             document.getElementById("containerGO").style.display = "flex";
             const poengboksEl = document.getElementById("poengboks")
