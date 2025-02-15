@@ -27,6 +27,8 @@ const brickOffsetLeft = 46
 let score = 0
 let hemmeligPoeng = 0
 
+const bodyID = document.body.id
+
 function poengscore() {
     ctx.font = "27px Rubik Glitch"
     ctx.fillStyle = "#0095DD"
@@ -59,23 +61,27 @@ for (let i = 0; i < brickColumnCount; i++) {
     }
 }
 
-//fjerner noen bricks
-for (let i = 8; i > 3; i--) {
-    for (let r = i - 5; r >= 0; r--) {
-        bricks[i][r].status = 0
+if (bodyID == "test2"){
+    //fjerner noen bricks
+    for (let i = 8; i > 3; i--) {
+        for (let r = i - 5; r >= 0; r--) {
+            bricks[i][r].status = 0
+        }
     }
+    
+    for (let i = 0; i < 5; i++) {
+        for (let r = 3 - i; r >= 0; r--) {
+            bricks[i][r].status = 0;
+        }
+    }
+    
+    bricks[4][5].status = 2
+    bricks[6][3].status = 2
+    bricks[2][3].status = 2
+    bricks[5][5].status = 3
+
 }
 
-for (let i = 0; i < 5; i++) {
-    for (let r = 3 - i; r >= 0; r--) {
-        bricks[i][r].status = 0;
-    }
-}
-
-bricks[4][5].status = 2
-bricks[6][3].status = 2
-bricks[2][3].status = 2
-bricks[5][5].status = 3
 
 
 //sier at hvis man trykker ned/opp pilene skal konstant som gjør at paddle bevege seg være sann
