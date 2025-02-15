@@ -86,6 +86,7 @@
         const brickOffsetLeft = 46
 
         let score = 0
+        let hemmeligPoeng = 0
 
         function poengscore() {
             ctx.font = "27px Rubik Glitch"
@@ -135,6 +136,7 @@
         bricks[4][5].status = 2
         bricks[6][3].status = 2
         bricks[2][3].status = 2
+        bricks[5][5].status = 3
 
         //sier at hvis man trykker ned/opp pilene skal konstant som gjør at paddle bevege seg være sann
         function keyDownHandler(e) {
@@ -176,7 +178,7 @@
         function tegnBricks() {
             for (let i = 0; i < brickColumnCount; i++) {
                 for (let r = 0; r < brickRowCount; r++) {
-                    if (bricks[i][r].status == 1 || bricks[i][r].status == 2) {
+                    if (bricks[i][r].status == 1 || bricks[i][r].status == 2 || bricks[i][r].status == 3) {
                         let brickX = i * (brickWidth + brickPadding) + brickOffsetLeft
                         let brickY = r * (brickHeight + brickPadding) + brickOffsetTop
                         bricks[i][r].x = brickX
@@ -200,7 +202,20 @@
                             ctx.fillStyle = "#0095DD"
                             ctx.fillText("2x speed", brickX + 7, brickY + 16)
                             ctx.closePath()
-                            
+
+                        }
+
+                        if (bricks[i][r].status == 3) {
+                            ctx.beginPath()
+                            ctx.rect(brickX, brickY, brickWidth, brickHeight)
+                            ctx.strokeStyle = "#e62727"
+                            ctx.lineWidth = "4"
+                            ctx.stroke()
+                            ctx.font = "14px Rubik Glitch"
+                            ctx.fillStyle = "#0095DD"
+                            ctx.fillText("1000 p", brickX + 7, brickY + 16)
+                            ctx.closePath()
+
                         }
 
                     }
@@ -214,17 +229,22 @@
             for (let i = 0; i < brickColumnCount; i++) {
                 for (let r = 0; r < brickRowCount; r++) {
                     const b = bricks[i][r]
-                    if (b.status == 1 || b.status == 2) {
+                    if (b.status == 1 || b.status == 2 || b.status == 3) {
                         if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
                             if (b.status == 2) {
                                 dy = dy * 1.2
                                 dx = dx * 1.2
                             }
+                            if (b.status == 3) {
+                               score += 1000
+                            }
+                            
                             dy = -dy
 
                             b.status = 0
                             score += 100
-                            if (score == (brickRowCount * brickColumnCount) * 100) {
+                            hemmeligPoeng += 100
+                            if (hemmeligPoeng == (brickRowCount * brickColumnCount) * 100) {
                                 clearInterval(interval)
                                 document.getElementById("containerGC").style.display = "flex"
 

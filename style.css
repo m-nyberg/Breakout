@@ -77,7 +77,6 @@ a {
 .boks>a>div>p {
     padding-top: 16px;
     color: rgb(239, 119, 119);
-    text-decoration: none;
 }
 
 .boks>a>div:hover {
