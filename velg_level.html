@@ -11,8 +11,8 @@
         :root {
             --rød: red;
             --bla: #0095DD;
-            --bakgrunnsfarge: black; 
-            --hvit: white; 
+            --bakgrunnsfarge: black;
+            --hvit: white;
             --skyggeoverskrift: rgb(214, 38, 38);
             --overskrift: #7e0e0e;
         }
@@ -61,18 +61,31 @@
             margin: 30px;
             text-align: center;
         }
-        
+
         div>p {
             padding-top: 16px;
             color: rgb(239, 119, 119);
             text-decoration: none;
         }
-        
+
         a>div:hover {
             box-shadow: 0 0 10px 5px red;
         }
+
         a {
             text-decoration: none;
+        }
+
+        #pil {
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            width: 80px;
+            rotate: 180deg;
+        }
+
+        #pil:hover {
+            width: 100px;
         }
     </style>
 </head>
@@ -99,6 +112,7 @@
                 <p>Level 3</p>
             </div>
         </a>
+
         <a href="level4.html">
             <div>
                 <p>Level 4</p>
@@ -106,6 +120,10 @@
         </a>
 
     </div>
+
+    <a href="index.html">
+        <img id="pil" src="bilder/gjennomsiktigpil.png" alt="">
+    </a>
 
 
 
