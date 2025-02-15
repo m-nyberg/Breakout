@@ -34,12 +34,11 @@ a {
     text-decoration: none;
 }
 
-.overskrift1 {
+.overskrift {
     position: absolute;
     top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 210px;
     color: var(--overskrift);
     margin: 2px;
     text-shadow: 5px 5px 5px var(--skyggeoverskrift);
@@ -47,17 +46,15 @@ a {
     font-weight: 1000;
 }
 
-.overskrift2 {
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.os1 {
+    font-size: 210px;
+}
+
+.os2 {
     font-size: 140px;
-    color: var(--overskrift);
-    margin: 2px;
-    text-shadow: 5px 5px 5px var(--skyggeoverskrift);
-    /*text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;*/
-    font-weight: 1000;
+}
+.os3 {
+    font-size: 95px;
 }
 
 .boks {
