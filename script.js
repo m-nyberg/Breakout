@@ -64,7 +64,7 @@ for (let i = 0; i < brickColumnCount; i++) {
 //fjerner noen bricks, forskjellig for hvert brett
 if (bodyID == "level2") {
     for (let r = 1; r < brickRowCount; r += 2) {
-        for (let i = 1; i < brickColumnCount; i+=2) {
+        for (let i = 1; i < brickColumnCount; i += 2) {
             bricks[i][r].status = 0
         }
     }
@@ -234,7 +234,14 @@ function sjekkKollisjonVegg() {
 
     } else if (y + dy > canvas.height - ballRadius) {
         if (x > paddleX && x < paddleX + paddleWidth) {
-            dy = -dy
+            let treffpunkt = (x - paddleX) / paddleWidth; // Verdi mellom 0 og 1
+            let vinkel = (treffpunkt - 0.5) * Math.PI / 1.2; // Vinkel fra -45° til 45°, Math.PI/2 kunne vært 90grader
+
+            dx = 5 * Math.sin(vinkel); // Juster horisontal fart
+            dy = -5 * Math.cos(vinkel); // Juster vertikal fart
+
+            /*dx = -dx
+            dy = -dy*/
         } else { //hvis ballen treffer bakken utenfor paddle, avsluttes spillet og game over boksen blir synlig
             clearInterval(interval)
             document.getElementById("containerGO").style.display = "flex";
