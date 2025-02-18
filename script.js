@@ -10,7 +10,7 @@ let dx = 3
 let dy = -3
 
 const paddleHeight = 18
-const paddleWidth = 160
+let paddleWidth = 160
 let paddleX = (canvas.width - paddleWidth) / 2
 
 let høyreTrykk = false
@@ -62,15 +62,27 @@ for (let i = 0; i < brickColumnCount; i++) {
 }
 
 //fjerner noen bricks, forskjellig for hvert brett
+
+if (bodyID == "level1") {
+    bricks[1][4].status = 4
+    bricks[4][2].status = 4
+    bricks[7][5].status = 4
+}
+
 if (bodyID == "level2") {
     for (let r = 1; r < brickRowCount; r += 2) {
         for (let i = 1; i < brickColumnCount; i += 2) {
             bricks[i][r].status = 0
         }
     }
+
+    bricks[1][1].status = 3
+    bricks[4][2].status = 4
+    bricks[7][1].status = 3
 }
 
-if (bodyID == "test2" || bodyID == "level3") {
+
+if ( bodyID == "level3") {
     for (let i = 8; i > 3; i--) {
         for (let r = i - 5; r >= 0; r--) {
             bricks[i][r].status = 0
@@ -83,13 +95,13 @@ if (bodyID == "test2" || bodyID == "level3") {
         }
     }
 
-    bricks[4][5].status = 2
-    bricks[6][3].status = 2
-    bricks[2][3].status = 2
-    bricks[5][5].status = 3
-
+    bricks[4][6].status = 2
+    bricks[6][4].status = 2
+    bricks[2][4].status = 2
+    bricks[4][0].status = 3
+    bricks[0][3].status = 3
+    bricks[8][3].status = 3
 }
-
 
 
 //sier at hvis man trykker ned/opp pilene skal konstant som gjør at paddle bevege seg være sann
@@ -132,7 +144,7 @@ function tegnPaddle() {
 function tegnBricks() {
     for (let i = 0; i < brickColumnCount; i++) {
         for (let r = 0; r < brickRowCount; r++) {
-            if (bricks[i][r].status == 1 || bricks[i][r].status == 2 || bricks[i][r].status == 3) {
+            if (bricks[i][r].status == 1 || bricks[i][r].status == 2 || bricks[i][r].status == 3 || bricks[i][r].status == 4) {
                 let brickX = i * (brickWidth + brickPadding) + brickOffsetLeft
                 let brickY = r * (brickHeight + brickPadding) + brickOffsetTop
                 bricks[i][r].x = brickX
@@ -172,6 +184,19 @@ function tegnBricks() {
 
                 }
 
+                if (bricks[i][r].status == 4) {
+                    ctx.beginPath()
+                    ctx.rect(brickX, brickY, brickWidth, brickHeight)
+                    ctx.strokeStyle = "#e62727"
+                    ctx.lineWidth = "4"
+                    ctx.stroke()
+                    ctx.font = "14px Rubik Glitch"
+                    ctx.fillStyle = "#0095DD"
+                    ctx.fillText("2x plate", brickX + 7, brickY + 16)
+                    ctx.closePath()
+
+                }
+
             }
         }
     }
@@ -183,7 +208,7 @@ function kollisjonDetektering() {
     for (let i = 0; i < brickColumnCount; i++) {
         for (let r = 0; r < brickRowCount; r++) {
             const b = bricks[i][r]
-            if (b.status == 1 || b.status == 2 || b.status == 3) {
+            if (b.status == 1 || b.status == 2 || b.status == 3 || b.status == 4) {
                 if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
                     if (b.status == 2) {
                         dy = dy * 1.2
@@ -192,6 +217,11 @@ function kollisjonDetektering() {
                     if (b.status == 3) {
                         score += 1000
                     }
+
+                    if (b.status == 4) {
+                        paddleWidth = paddleWidth + 40
+                    }
+
 
                     dy = -dy
 
@@ -229,7 +259,7 @@ function sjekkKollisjonVegg() {
     if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
         dx = -dx;
     }
-    
+
     if (y + dy < ballRadius) {
         dy = -dy
 
