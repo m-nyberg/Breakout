@@ -59,11 +59,12 @@ a {
 
 .boks {
     position: absolute;
-    top: 64%;
+    top: 66%;
     left: 50%;
     transform: translate(-52%, -50%);
     text-decoration: none;
 }
+
 
 .boks>a>div {
     width: 270px;
@@ -72,6 +73,13 @@ a {
     font-size: 28px;
     margin: 30px;
     text-align: center;
+}
+
+.boksindex > a > div {
+    width: 350px;
+    height: 80px;
+    font-size: 35px;
+    margin: 40px;
 }
 
 .boks>a>div>p {
