@@ -177,3 +177,16 @@ canvas {
 #pil:hover {
     width: 100px;
 }
+
+.hvordanspille {
+    width: 80%;
+    position: absolute;
+    top: 40%;
+    left: 10%;
+}
+.hvordanspille > p {
+    color: var(--overskrift);
+    font-size: 28px;
+    text-align: center;
+    padding: 10px;
+}

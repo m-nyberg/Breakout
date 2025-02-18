@@ -229,6 +229,7 @@ function sjekkKollisjonVegg() {
     if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
         dx = -dx;
     }
+    
     if (y + dy < ballRadius) {
         dy = -dy
 
