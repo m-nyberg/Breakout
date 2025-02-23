@@ -68,19 +68,12 @@ a {
 
 
 .boks>a>div {
-    width: 270px;
-    height: 60px;
-    box-shadow: 0 0 10px 5px var(--overskrift);
-    font-size: 28px;
-    margin: 30px;
-    text-align: center;
-}
-
-.boksindex > a > div {
     width: 350px;
     height: 80px;
+    box-shadow: 0 0 10px 5px var(--overskrift);
     font-size: 35px;
     margin: 40px;
+    text-align: center;
 }
 
 .boks>a>div>p {

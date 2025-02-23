@@ -106,14 +106,14 @@ if ( bodyID == "level3") {
 
 //sier at hvis man trykker ned/opp pilene skal konstant som gjør at paddle bevege seg være sann
 function keyDownHandler(e) {
-    if (e.key == "Right" || e.key == "ArrowRight") {
+    if (e.key == "ArrowRight") {
         høyreTrykk = true
     } else if (e.key == "Left" || e.key == "ArrowLeft") {
         venstreTrykk = true
     }
 }
 function keyUpHandler(e) {
-    if (e.key == "Right" || e.key == "ArrowRight") {
+    if (e.key == "ArrowRight") {
         høyreTrykk = false;
     } else if (e.key == "Left" || e.key == "ArrowLeft") {
         venstreTrykk = false;
