@@ -104,18 +104,18 @@ if ( bodyID == "level3") {
 }
 
 
-//sier at hvis man trykker ned/opp pilene skal konstant som gjør at paddle bevege seg være sann
-function keyDownHandler(e) {
-    if (e.key == "ArrowRight") {
+//sier at hvis man trykker ned/opp pilene skal konstant som gjør at paddle bevege seg være sann. e kunne vært erstattet med hvilken som helst bokstav
+function keyDownHandler(e) { // e er tastetrykket 
+    if (e.key == "ArrowRight") { //e.key er tasten som ble trykket 
         høyreTrykk = true
-    } else if (e.key == "Left" || e.key == "ArrowLeft") {
+    } else if (e.key == "ArrowLeft") {
         venstreTrykk = true
     }
 }
 function keyUpHandler(e) {
     if (e.key == "ArrowRight") {
         høyreTrykk = false;
-    } else if (e.key == "Left" || e.key == "ArrowLeft") {
+    } else if (e.key == "ArrowLeft") {
         venstreTrykk = false;
     }
 }
