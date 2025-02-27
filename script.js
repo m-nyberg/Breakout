@@ -114,9 +114,9 @@ function keyDownHandler(e) { // e er tastetrykket
 }
 function keyUpHandler(e) {
     if (e.key == "ArrowRight") {
-        høyreTrykk = false;
+        høyreTrykk = false
     } else if (e.key == "ArrowLeft") {
-        venstreTrykk = false;
+        venstreTrykk = false
     }
 }
 
@@ -242,14 +242,14 @@ function kollisjonDetektering() {
 //Flytter paddle hvis man trykker på høyre eller ventre pil 
 function flyttPaddle() {
     if (høyreTrykk) {
-        paddleX += 8;
+        paddleX += 8
         if (paddleX + paddleWidth > canvas.width) {
-            paddleX = canvas.width - paddleWidth;
+            paddleX = canvas.width - paddleWidth
         }
     } else if (venstreTrykk) {
         paddleX -= 8;
         if (paddleX < 0) {
-            paddleX = 0;
+            paddleX = 0
         }
     }
 }
@@ -257,7 +257,7 @@ function flyttPaddle() {
 //Sjekke om ball kolliderer med kantene, og endrer retning hvis den treffer kantene eller paddle. avslutter om ballen treffer bakken  
 function sjekkKollisjonVegg() {
     if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
-        dx = -dx;
+        dx = -dx
     }
 
     if (y + dy < ballRadius) {
@@ -265,17 +265,17 @@ function sjekkKollisjonVegg() {
 
     } else if (y + dy > canvas.height - ballRadius) {
         if (x > paddleX && x < paddleX + paddleWidth) {
-            let treffpunkt = (x - paddleX) / paddleWidth; // Verdi mellom 0 og 1
-            let vinkel = (treffpunkt - 0.5) * Math.PI / 1.2; // Vinkel fra -45° til 45°, Math.PI/2 kunne vært 90grader
+            let treffpunkt = (x - paddleX) / paddleWidth // Verdi mellom 0 og 1
+            let vinkel = (treffpunkt - 0.5) * Math.PI / 1.2 // Vinkel fra -45° til 45°, Math.PI/2 kunne vært 90grader
 
-            dx = 5 * Math.sin(vinkel); // Juster horisontal fart
-            dy = -5 * Math.cos(vinkel); // Juster vertikal fart
+            dx = 5 * Math.sin(vinkel) // Juster horisontal fart
+            dy = -5 * Math.cos(vinkel) // Juster vertikal fart
 
             /*dx = -dx
             dy = -dy*/
         } else { //hvis ballen treffer bakken utenfor paddle, avsluttes spillet og game over boksen blir synlig
             clearInterval(interval)
-            document.getElementById("containerGO").style.display = "flex";
+            document.getElementById("containerGO").style.display = "flex"
             const poengboksEl = document.getElementById("poengboks")
             const divEl2 = document.createElement("div")
             divEl2.innerHTML = "Din poengscore er " + score + " poeng"
